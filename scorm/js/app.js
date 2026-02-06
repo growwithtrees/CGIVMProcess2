@@ -324,7 +324,17 @@
     document.getElementById('content-title').innerHTML = titleToHtml(panel.title);
     var video = document.getElementById('content-video');
     video.src = panel.videoUrl;
+    video.playbackRate = 1;
     video.load();
+
+    // Reset speed buttons to 1x active
+    var allBtns = document.querySelectorAll('#content-speed-btns .speed-btn');
+    for (var i = 0; i < allBtns.length; i++) {
+      allBtns[i].classList.remove('speed-btn-active');
+      if (parseFloat(allBtns[i].getAttribute('data-speed')) === 1) {
+        allBtns[i].classList.add('speed-btn-active');
+      }
+    }
   }
 
   // =========================================================================
