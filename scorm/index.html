@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IVM Process</title>
+  <title>The IVM Process</title>
   <link rel="stylesheet" href="css/tailwind.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +41,7 @@
     .animate-slide-in-bottom { animation: slideInFromBottom 0.5s ease-out; }
     .animate-bounce-custom { animation: bounce 1s infinite; }
     .animate-pop { animation: pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+    .speed-btn-active { background-color: #5E3B8E !important; color: white !important; border-color: #5E3B8E !important; }
   </style>
 </head>
 <body>
@@ -55,12 +56,20 @@
           <h2 id="intro-title" class="text-[#0F172A] text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-8 text-center lg:whitespace-nowrap"></h2>
           <div class="flex-grow">
             <div class="relative pt-[56.25%] w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-black">
-              <video id="intro-video" class="absolute top-0 left-0 w-full h-full" controls autoplay playsinline>
+              <video id="intro-video" class="absolute top-0 left-0 w-full h-full" controls playsinline preload="metadata">
                 Your browser does not support the video tag.
               </video>
+              <!-- Play button overlay -->
+              <div id="intro-play-overlay" class="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer transition-opacity duration-300 z-10">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0F172A" class="w-10 h-10 md:w-12 md:h-12 ml-1">
+                    <path d="M8 5.14v14l11-7-11-7z"/>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="mt-12 flex justify-center">
+          <div id="intro-btn-container" class="mt-12 flex justify-center" style="display: none;">
             <button id="btn-view-steps" class="text-white bg-[#0F172A] font-bold px-12 py-4 rounded-2xl hover:bg-slate-800 transition-all shadow-xl hover:scale-105 active:scale-95">
               View the Steps
             </button>
@@ -75,7 +84,7 @@
         <div class="animate-fade-in">
           <header class="text-center mb-6 lg:mb-8 space-y-3">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-tight">
-              IVM Process
+              The IVM Process
             </h1>
             <p class="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
               Click each step in the IVM process to see how each role plays an important part.
@@ -201,6 +210,18 @@
               <video id="content-video" class="absolute top-0 left-0 w-full h-full" controls autoplay playsinline>
                 Your browser does not support the video tag.
               </video>
+            </div>
+            <!-- Playback speed control -->
+            <div class="mt-4 flex items-center justify-end gap-2">
+              <span class="text-sm text-slate-400 font-medium">Speed:</span>
+              <div id="content-speed-btns" class="flex gap-1">
+                <button data-speed="0.5" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">0.5x</button>
+                <button data-speed="0.75" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">0.75x</button>
+                <button data-speed="1" class="speed-btn speed-btn-active px-2.5 py-1 text-xs font-bold rounded-lg border border-[#5E3B8E] bg-[#5E3B8E] text-white transition-all">1x</button>
+                <button data-speed="1.25" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">1.25x</button>
+                <button data-speed="1.5" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">1.5x</button>
+                <button data-speed="2" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">2x</button>
+              </div>
             </div>
           </div>
         </div>

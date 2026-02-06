@@ -8,7 +8,7 @@
   var PANELS = [
     {
       id: 1,
-      title: 'Introduction to\nthe IVM Process',
+      title: 'The IVM Process',
       tag: 'START HERE',
       type: 'video',
       videoUrl: 'videos/Panel_01.mp4',
@@ -166,6 +166,31 @@
     var video = document.getElementById('intro-video');
     video.src = panel.videoUrl;
     video.load();
+
+    // Reset: show play overlay, hide "View the Steps" button
+    var overlay = document.getElementById('intro-play-overlay');
+    var btnContainer = document.getElementById('intro-btn-container');
+    overlay.style.display = '';
+    overlay.style.opacity = '1';
+    btnContainer.style.display = 'none';
+  }
+
+  function handleIntroPlayClick() {
+    var video = document.getElementById('intro-video');
+    var overlay = document.getElementById('intro-play-overlay');
+    var btnContainer = document.getElementById('intro-btn-container');
+
+    // Start video
+    video.play();
+
+    // Fade out and hide overlay
+    overlay.style.opacity = '0';
+    setTimeout(function () {
+      overlay.style.display = 'none';
+    }, 300);
+
+    // Reveal the "View the Steps" button
+    btnContainer.style.display = '';
   }
 
   function handleIntroComplete() {
@@ -349,6 +374,7 @@
     }
 
     // Bind static button events
+    document.getElementById('intro-play-overlay').addEventListener('click', handleIntroPlayClick);
     document.getElementById('btn-view-steps').addEventListener('click', handleIntroComplete);
     document.getElementById('btn-replay-intro').addEventListener('click', function () {
       showView('intro');
@@ -356,6 +382,22 @@
     document.getElementById('btn-back').addEventListener('click', handleBackToHub);
     document.getElementById('btn-finalize').addEventListener('click', handleFinalize);
     document.getElementById('btn-restart').addEventListener('click', handleRestart);
+
+    // Playback speed controls
+    var speedBtns = document.querySelectorAll('#content-speed-btns .speed-btn');
+    for (var i = 0; i < speedBtns.length; i++) {
+      speedBtns[i].addEventListener('click', function () {
+        var speed = parseFloat(this.getAttribute('data-speed'));
+        var video = document.getElementById('content-video');
+        video.playbackRate = speed;
+        // Update active state
+        var all = document.querySelectorAll('#content-speed-btns .speed-btn');
+        for (var j = 0; j < all.length; j++) {
+          all[j].classList.remove('speed-btn-active');
+        }
+        this.classList.add('speed-btn-active');
+      });
+    }
 
     // SCORM session cleanup on page unload
     window.addEventListener('beforeunload', function () {
