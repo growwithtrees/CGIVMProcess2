@@ -126,6 +126,35 @@
   }
 
   // =========================================================================
+  // localStorage Persistence
+  // =========================================================================
+
+  var STORAGE_KEY_VISITED = 'ivm_visited_panels';
+  var STORAGE_KEY_COMPLETE = 'ivm_completed';
+
+  function loadVisitedPanels() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY_VISITED);
+      if (!raw) return [];
+      return JSON.parse(raw);
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveVisitedPanels(panelIds) {
+    try {
+      localStorage.setItem(STORAGE_KEY_VISITED, JSON.stringify(panelIds));
+    } catch (e) { /* storage unavailable */ }
+  }
+
+  function saveCompletion(isComplete) {
+    try {
+      localStorage.setItem(STORAGE_KEY_COMPLETE, isComplete ? 'true' : 'false');
+    } catch (e) { /* storage unavailable */ }
+  }
+
+  // =========================================================================
   // View Management
   // =========================================================================
 
@@ -196,7 +225,7 @@
   function handleIntroComplete() {
     var panel = findPanel(1);
     if (panel) panel.isVisited = true;
-    ScormAPI.saveVisitedPanels(getVisitedIds());
+    saveVisitedPanels(getVisitedIds());
     showView('hub');
   }
 
@@ -344,7 +373,7 @@
   function handlePanelClick(id) {
     var panel = findPanel(id);
     if (panel) panel.isVisited = true;
-    ScormAPI.saveVisitedPanels(getVisitedIds());
+    saveVisitedPanels(getVisitedIds());
     activePanelId = id;
     showView('content');
   }
@@ -355,7 +384,7 @@
   }
 
   function handleFinalize() {
-    ScormAPI.setComplete();
+    saveCompletion(true);
     showView('finish');
   }
 
@@ -363,8 +392,8 @@
     for (var i = 0; i < PANELS.length; i++) {
       PANELS[i].isVisited = false;
     }
-    ScormAPI.saveVisitedPanels([]);
-    ScormAPI.setIncomplete();
+    saveVisitedPanels([]);
+    saveCompletion(false);
     showView('intro');
   }
 
@@ -373,11 +402,8 @@
   // =========================================================================
 
   function init() {
-    // Initialize SCORM connection
-    ScormAPI.initialize();
-
-    // Restore visited panels from LMS suspend_data
-    var visited = ScormAPI.getVisitedPanels();
+    // Restore visited panels from localStorage
+    var visited = loadVisitedPanels();
     for (var i = 0; i < visited.length; i++) {
       var panel = findPanel(visited[i]);
       if (panel) panel.isVisited = true;
@@ -408,11 +434,6 @@
         this.classList.add('speed-btn-active');
       });
     }
-
-    // SCORM session cleanup on page unload
-    window.addEventListener('beforeunload', function () {
-      ScormAPI.finish();
-    });
 
     // Start the app
     showView('intro');
