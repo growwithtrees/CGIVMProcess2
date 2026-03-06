@@ -41,7 +41,6 @@
     .animate-slide-in-bottom { animation: slideInFromBottom 0.5s ease-out; }
     .animate-bounce-custom { animation: bounce 1s infinite; }
     .animate-pop { animation: pop 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
-    .speed-btn-active { background-color: #5E3B8E !important; color: white !important; border-color: #5E3B8E !important; }
   </style>
 </head>
 <body>
@@ -208,18 +207,6 @@
                 Your browser does not support the video tag.
               </video>
             </div>
-            <!-- Playback speed control -->
-            <div class="mt-4 flex items-center justify-end gap-2">
-              <span class="text-sm text-slate-400 font-medium">Speed:</span>
-              <div id="content-speed-btns" class="flex gap-1">
-                <button data-speed="0.5" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">0.5x</button>
-                <button data-speed="0.75" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">0.75x</button>
-                <button data-speed="1" class="speed-btn speed-btn-active px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">1x</button>
-                <button data-speed="1.25" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">1.25x</button>
-                <button data-speed="1.5" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">1.5x</button>
-                <button data-speed="2" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">2x</button>
-              </div>
-            </div>
             <div class="mt-8 flex justify-center">
               <button id="btn-back" class="flex items-center gap-2 text-white bg-[#0F172A] font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-all shadow-lg">
                 <span>&#8592; Back to Process</span>
@@ -233,21 +220,21 @@
       <!-- VIEW: FINISH                                                   -->
       <!-- ============================================================= -->
       <div id="view-finish" class="view">
-        <div class="max-w-3xl mx-auto text-center py-20 bg-white rounded-[2.5rem] shadow-2xl animate-zoom-in-95 border border-slate-100">
-          <div class="mb-8 px-10">
+        <div class="max-w-3xl mx-auto py-16 px-10 bg-white rounded-[2.5rem] shadow-2xl animate-zoom-in-95 border border-slate-100">
+          <h2 class="text-4xl md:text-5xl font-black text-[#0F172A] mb-8 tracking-tight text-center">
+            Complete!
+          </h2>
+          <div class="mb-8">
             <audio id="complete-audio" controls autoplay class="w-full rounded-lg">
               <source src="Complete Audio.mp3" type="audio/mpeg">
               Your browser does not support the audio element.
             </audio>
           </div>
-          <h2 class="text-4xl md:text-5xl font-black text-[#0F172A] mb-6 tracking-tight">
-            Complete!
-          </h2>
-          <p class="text-lg text-slate-500 font-medium mb-12 px-8 leading-relaxed">
+          <p class="text-lg text-slate-500 font-medium mb-10 leading-relaxed text-center">
             Now that you've seen how the IVM cycle works from planning to adaptive management, let's shift focus to what this means for you in the field. Click continue at the bottom of the screen to move on.
           </p>
-          <div class="flex justify-start px-10">
-            <button id="btn-restart" class="bg-slate-400 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-500 transition-all">
+          <div class="flex justify-start">
+            <button id="btn-restart" class="bg-slate-400 text-white px-5 py-2 rounded-lg text-xs font-medium hover:bg-slate-500 transition-all">
               Restart
             </button>
           </div>

@@ -359,17 +359,7 @@
     document.getElementById('content-title').innerHTML = titleToHtml(panel.title);
     var video = document.getElementById('content-video');
     video.src = panel.videoUrl;
-    video.playbackRate = 1;
     video.load();
-
-    // Reset speed buttons to 1x active
-    var allBtns = document.querySelectorAll('#content-speed-btns .speed-btn');
-    for (var i = 0; i < allBtns.length; i++) {
-      allBtns[i].classList.remove('speed-btn-active');
-      if (parseFloat(allBtns[i].getAttribute('data-speed')) === 1) {
-        allBtns[i].classList.add('speed-btn-active');
-      }
-    }
   }
 
   // =========================================================================
@@ -430,22 +420,6 @@
     document.getElementById('btn-back').addEventListener('click', handleBackToHub);
     document.getElementById('btn-finalize').addEventListener('click', handleFinalize);
     document.getElementById('btn-restart').addEventListener('click', handleRestart);
-
-    // Playback speed controls
-    var speedBtns = document.querySelectorAll('#content-speed-btns .speed-btn');
-    for (var i = 0; i < speedBtns.length; i++) {
-      speedBtns[i].addEventListener('click', function () {
-        var speed = parseFloat(this.getAttribute('data-speed'));
-        var video = document.getElementById('content-video');
-        video.playbackRate = speed;
-        // Update active state
-        var all = document.querySelectorAll('#content-speed-btns .speed-btn');
-        for (var j = 0; j < all.length; j++) {
-          all[j].classList.remove('speed-btn-active');
-        }
-        this.classList.add('speed-btn-active');
-      });
-    }
 
     // Start the app
     showView('intro');
