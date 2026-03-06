@@ -201,17 +201,15 @@
       <div id="view-content" class="view">
         <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-3xl shadow-2xl animate-slide-in-bottom flex flex-col">
           <h2 id="content-title" class="text-[#0F172A] text-3xl md:text-4xl font-extrabold tracking-tight mb-8 whitespace-pre-line"></h2>
-          <div class="flex-grow">
-            <div class="relative pt-[56.25%] w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-black">
-              <video id="content-video" class="absolute top-0 left-0 w-full h-full" controls autoplay playsinline>
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="mt-8 flex justify-center">
-              <button id="btn-back" class="flex items-center gap-2 text-white bg-[#0F172A] font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-all shadow-lg">
-                <span>&#8592; Back to Process</span>
-              </button>
-            </div>
+          <div class="relative pt-[56.25%] w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-black">
+            <video id="content-video" class="absolute top-0 left-0 w-full h-full" controls autoplay playsinline>
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="mt-10 mb-2 flex justify-center">
+            <button id="btn-back" class="flex items-center gap-2 text-white bg-[#0F172A] font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-all shadow-lg">
+              <span>&#8592; Back to Process</span>
+            </button>
           </div>
         </div>
       </div>
@@ -220,7 +218,7 @@
       <!-- VIEW: FINISH                                                   -->
       <!-- ============================================================= -->
       <div id="view-finish" class="view">
-        <div class="max-w-3xl mx-auto py-16 px-10 bg-white rounded-[2.5rem] shadow-2xl animate-zoom-in-95 border border-slate-100">
+        <div class="max-w-3xl mx-auto pt-14 pb-10 px-10 bg-white rounded-[2.5rem] shadow-2xl animate-zoom-in-95 border border-slate-100">
           <h2 class="text-4xl md:text-5xl font-black text-[#0F172A] mb-8 tracking-tight text-center">
             Complete!
           </h2>
@@ -230,8 +228,11 @@
               Your browser does not support the audio element.
             </audio>
           </div>
-          <p class="text-lg text-slate-500 font-medium mb-10 leading-relaxed text-center">
-            Now that you've seen how the IVM cycle works from planning to adaptive management, let's shift focus to what this means for you in the field. Click continue at the bottom of the screen to move on.
+          <p class="text-lg text-slate-500 font-medium leading-relaxed text-center">
+            Now that you've seen how the IVM cycle works from planning to adaptive management, let's shift focus to what this means for you in the field.
+          </p>
+          <p class="text-lg text-slate-500 font-medium mt-6 mb-10 leading-relaxed text-center">
+            Click continue at the bottom of the screen to move on.
           </p>
           <div class="flex justify-start">
             <button id="btn-restart" class="bg-slate-400 text-white px-5 py-2 rounded-lg text-xs font-medium hover:bg-slate-500 transition-all">
