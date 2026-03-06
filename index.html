@@ -190,7 +190,7 @@
 
           <div id="finalize-container" class="mt-20 flex justify-center" style="display: none;">
             <button id="btn-finalize" class="bg-[#10B981] text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-[#059669] transition-all hover:scale-105 shadow-2xl">
-              Finalize Completion
+              Complete
             </button>
           </div>
         </div>
@@ -201,9 +201,6 @@
       <!-- ============================================================= -->
       <div id="view-content" class="view">
         <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-3xl shadow-2xl animate-slide-in-bottom flex flex-col">
-          <button id="btn-back" class="flex items-center gap-2 text-white bg-[#0F172A] font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-all mb-8 self-start shadow-lg">
-            <span>&#8592; Back to Process</span>
-          </button>
           <h2 id="content-title" class="text-[#0F172A] text-3xl md:text-4xl font-extrabold tracking-tight mb-8 whitespace-pre-line"></h2>
           <div class="flex-grow">
             <div class="relative pt-[56.25%] w-full rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200 bg-black">
@@ -223,6 +220,11 @@
                 <button data-speed="2" class="speed-btn px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 text-slate-500 hover:border-[#5E3B8E] hover:text-[#5E3B8E] transition-all">2x</button>
               </div>
             </div>
+            <div class="mt-8 flex justify-center">
+              <button id="btn-back" class="flex items-center gap-2 text-white bg-[#0F172A] font-bold px-8 py-3 rounded-xl hover:bg-slate-800 transition-all shadow-lg">
+                <span>&#8592; Back to Process</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -232,16 +234,23 @@
       <!-- ============================================================= -->
       <div id="view-finish" class="view">
         <div class="max-w-3xl mx-auto text-center py-20 bg-white rounded-[2.5rem] shadow-2xl animate-zoom-in-95 border border-slate-100">
-          <div class="text-8xl mb-10 animate-bounce-custom">&#127942;</div>
+          <div class="mb-8 px-10">
+            <audio id="complete-audio" controls autoplay class="w-full rounded-lg">
+              <source src="Complete Audio.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
           <h2 class="text-4xl md:text-5xl font-black text-[#0F172A] mb-6 tracking-tight">
             Complete!
           </h2>
-          <p class="text-xl text-slate-500 font-medium mb-12 px-6">
-            You have learned about the steps in the IVM Process.
+          <p class="text-lg text-slate-500 font-medium mb-12 px-8 leading-relaxed">
+            Now that you've seen how the IVM cycle works from planning to adaptive management, let's shift focus to what this means for you in the field. Click continue at the bottom of the screen to move on.
           </p>
-          <button id="btn-restart" class="bg-[#5E3B8E] text-white px-10 py-4 rounded-xl font-bold hover:bg-[#4a2e70] transition-all shadow-lg shadow-[#5E3B8E]/20">
-            Restart
-          </button>
+          <div class="flex justify-start px-10">
+            <button id="btn-restart" class="bg-slate-400 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-500 transition-all">
+              Restart
+            </button>
+          </div>
         </div>
       </div>
 

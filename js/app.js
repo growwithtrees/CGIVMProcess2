@@ -165,6 +165,12 @@
       videos[i].removeAttribute('src');
       videos[i].load();
     }
+    // Also stop completion audio
+    var audio = document.getElementById('complete-audio');
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
   }
 
   function showView(name) {
@@ -386,6 +392,12 @@
   function handleFinalize() {
     saveCompletion(true);
     showView('finish');
+    // Autoplay the completion audio
+    var audio = document.getElementById('complete-audio');
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 
   function handleRestart() {
